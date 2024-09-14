@@ -30,3 +30,14 @@ exports.rsvpEvent = async (req, res) => {
 
   res.json({ message: 'RSVP successful', event });
 };
+
+exports.deleteEvent = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    await Event.findByIdAndDelete(eventId);
+    res.status(200).json({ message: 'Event deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting event', error: err.message });
+  }
+}
+
