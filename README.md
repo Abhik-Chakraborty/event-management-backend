@@ -24,3 +24,7 @@ Make sure you have the following installed:
 - Node.js (v14+)
 - MongoDB 
 - Thunder Client (or any API client to test the API.)
+
+## Steps to run locally : 
+- npm install
+- node index.js
