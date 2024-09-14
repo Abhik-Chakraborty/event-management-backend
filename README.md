@@ -28,3 +28,12 @@ Make sure you have the following installed:
 ## Steps to run locally : 
 - npm install
 - node index.js
+
+### Important Instruction 
+- We have provided the registration from backend. Once you are done with your backend setup, you can spin up your Postmen/ThurderClient and add the url
+  ```http://localhost:3000/api/users/register```
+  ```
+  "name": "JOHN",
+  "email": "john@abc.com",
+  "password": "1234567"
+
