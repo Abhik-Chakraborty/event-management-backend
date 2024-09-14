@@ -53,3 +53,27 @@ exports.viewAttendees = async (req, res) => {
   }
 }
 
+exports.remindAttendees = async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const event = await Event.findById(eventId).populate('attendees');
+    
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    // Update each attendee's reminder flag
+    const attendees = event.attendees;
+    attendees.forEach(async (attendee) => {
+      attendee.reminder = true;
+      await attendee.save();
+    });
+
+    res.status(200).json({ message: 'Reminder notifications set for attendees' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error setting reminders', error: error.message });
+  }
+}
+
+
+

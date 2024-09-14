@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
-  attendingEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
+  attendingEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
+  reminder: { type: Boolean, default: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
